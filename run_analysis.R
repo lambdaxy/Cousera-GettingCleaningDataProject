@@ -7,5 +7,9 @@ X_test = read.table("UCI HAR Dataset/test/X_test.txt", header = FALSE)
 y_train = read.csv("UCI HAR Dataset/train/y_train.txt", header = FALSE)
 X_train = read.table("UCI HAR Dataset/train/X_train.txt", header = FALSE)
 
-X_merged = 
-y_merged = 
+X_merged = rbind(X_test, X_train)
+y_merged = rbind(y_test, y_train)
+
+# Appropriately labels the data set with descriptive variable names
+col_names = read.table("UCI HAR Dataset/features.txt")
+colnames(X_merged) = col_names$V2
