@@ -13,3 +13,8 @@ y_merged = rbind(y_test, y_train)
 # Appropriately labels the data set with descriptive variable names
 col_names = read.table("UCI HAR Dataset/features.txt")
 colnames(X_merged) = col_names$V2
+colnames(y_merged) = c("Activity")
+
+# Uses descriptive activity names to name the activities in the data set
+
+activity_names = read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors = FALSE)
