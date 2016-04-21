@@ -1,3 +1,5 @@
+library(dplyr)
+
 unzip(zipfile = "getdata-projectfiles-UCI HAR Dataset.zip")
 
 # Merge Training set and test set.
@@ -16,5 +18,6 @@ colnames(X_merged) = col_names$V2
 colnames(y_merged) = c("Activity")
 
 # Uses descriptive activity names to name the activities in the data set
-
 activity_names = read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors = FALSE)
+y_merged_named = transform(y_merged, name = activity_names$V2[Activity])
+y_merged$Activity = y_merged_named$name
