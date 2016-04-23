@@ -28,5 +28,9 @@ activity_names = read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFact
 y_merged_named = transform(y_merged, name = activity_names$V2[Activity])
 y_merged$Activity = y_merged_named$name
 
+# Extract only Mean and SD for each measurement.
+indices = grep(x = colnames(X_merged), pattern = ".+(-mean|-std)")
+X_merged = X_merged[,indices]
+
 # Clean-up unzipped data set after analysis to limit storage usage
 unlink("UCI HAR Dataset", recursive=TRUE)
