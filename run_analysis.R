@@ -27,3 +27,6 @@ colnames(y_merged) = c("Activity")
 activity_names = read.table("UCI HAR Dataset/activity_labels.txt", stringsAsFactors = FALSE)
 y_merged_named = transform(y_merged, name = activity_names$V2[Activity])
 y_merged$Activity = y_merged_named$name
+
+# Clean-up unzipped data set after analysis to limit storage usage
+unlink("UCI HAR Dataset", recursive=TRUE)
