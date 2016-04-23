@@ -1,5 +1,11 @@
 library(dplyr)
 
+# Download data if not already present in the working directory.
+if (!file.exists("getdata-projectfiles-UCI HAR Dataset.zip")) {
+  download.file(url = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",
+                destfile = "getdata-projectfiles-UCI HAR Dataset.zip")
+}
+
 unzip(zipfile = "getdata-projectfiles-UCI HAR Dataset.zip")
 
 # Merge Training set and test set.
