@@ -35,5 +35,8 @@ X_merged = X_merged[,indices]
 # Merge the X and Y variables to form one data set
 X_merged$Activity = y_merged$Activity
 
+# Output the tidy and merged data set produced to a csv file.
+write.csv(X_merged, file = "merged_dataset.csv")
+
 # Clean-up unzipped data set after analysis to limit storage usage
 unlink("UCI HAR Dataset", recursive=TRUE)
