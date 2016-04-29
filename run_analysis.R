@@ -35,8 +35,17 @@ X_merged = X_merged[,indices]
 # Merge the X and Y variables to form one data set
 X_merged$Activity = y_merged$Activity
 
+# Incorporate the subjects into the dataset
+subject_test = read.csv("UCI HAR Dataset/test/subject_test.txt", header = FALSE)
+subject_train = read.csv("UCI HAR Dataset/train/subject_train.txt", header = FALSE)
+subject_merged = rbind(subject_test, subject_train)
+X_merged$Subject = subject_merged$V1
+
 # Output the tidy and merged data set produced to a csv file.
 write.csv(X_merged, file = "merged_dataset.csv")
+
+# Produce a second tidy data set that contains the average of each variable for each activity and each subject
+
 
 # Clean-up unzipped data set after analysis to limit storage usage
 unlink("UCI HAR Dataset", recursive=TRUE)
