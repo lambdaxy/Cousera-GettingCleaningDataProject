@@ -45,7 +45,10 @@ X_merged$Subject = subject_merged$V1
 write.csv(X_merged, file = "merged_dataset.csv")
 
 # Produce a second tidy data set that contains the average of each variable for each activity and each subject
-
+tidy_tbl = tbl_df(X_merged)
+tidy_by_subject_and_activity = group_by(tidy_tbl, Subject, Activity)
+mean_by_subject_and_activity = summarise_each(tidy_by_subject_and_activity, funs(mean))
+write.csv(mean_by_subject_and_activity, file = "tidy_summary.csv")
 
 # Clean-up unzipped data set after analysis to limit storage usage
 unlink("UCI HAR Dataset", recursive=TRUE)
