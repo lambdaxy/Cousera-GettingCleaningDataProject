@@ -32,5 +32,8 @@ y_merged$Activity = y_merged_named$name
 indices = grep(x = colnames(X_merged), pattern = ".+(-mean|-std)")
 X_merged = X_merged[,indices]
 
+# Merge the X and Y variables to form one data set
+X_merged$Activity = y_merged$Activity
+
 # Clean-up unzipped data set after analysis to limit storage usage
 unlink("UCI HAR Dataset", recursive=TRUE)
