@@ -8,12 +8,25 @@ This readme provides a description of the code and files present in this reposit
 
 ## Repository Description
 
+### Important Files
+
 In accordance with the instructions below this repository contains:
 * A run_analysis.R script that produce the desired transformation on the data and produces the tody datasets.
 * A merged_dataset.csv file that contains a tidy data sets with all the required data merged as explained in the instructions below.
 * A tidy_summary.csv file that contains a summary of the data set per activity and subject with the mean for every measurement that were retained.
 * A CodeBook.md file that describes the datasets as well as the procedure to recreate these datasets.
 * The original dataset in zip format.
+
+### run_analysis description
+
+The run_analysis.R script produces de desired tidy output. The script assumes that the working directory has been set to its parent directory.
+
+Besides that it will produce the desired result on its own:
+* The script detects the availability of the original data source. If not available in the working directory then the it is downloaded.
+* The script unzips the data source.
+* It then perform all the merging and cleaning to provided an intermediate data set (merged_dataset.csv)
+* Then it proceeds by creating a tidy data set that summarizes the data grouped by subject and activity. Providing the mean for each measurement.
+* Finally the unzipped data sets are removed to preserve space.
 
 ## Instructions
 
